@@ -1,8 +1,10 @@
 FROM node:24-alpine
 
-WORKDIR /usr/src/app/
+WORKDIR /usr/src/app
+
+COPY package*.json ./
+RUN npm install --ignore-scripts
 
 COPY . .
 
-RUN npm version
-
+CMD ["npm", "run", "test:unit"]

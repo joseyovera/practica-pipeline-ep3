@@ -1,0 +1,20 @@
+name: CI EP3
+
+on:
+  push:
+    branches: [develop]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar el código
+        uses: actions/checkout@v4
+
+      - name: Construir imagen Docker
+        run: docker build -t app:test .
+
+      - name: Pruebas dentro del contenedor
+        run: docker run --rm app:test
