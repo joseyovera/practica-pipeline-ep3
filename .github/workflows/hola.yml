@@ -1,0 +1,8 @@
+name: Hola pipeline
+on: [push]
+jobs:
+  saludo:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Hola desde GitHub Actions"
+      - run: echo "Este pipeline corrió porque hiciste push a la rama ${{ github.ref_name }}"
